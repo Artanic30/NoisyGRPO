@@ -1,0 +1,2 @@
+datasets:
+    - json_path: ../../data/mm_rlhf/mm_rlhf_train6k.json
