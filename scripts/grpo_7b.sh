@@ -5,7 +5,6 @@ cd /2022233227/projects/RL_Hall
 
 cd src/open-r1-multimodal
 
-var=0.11
 name=cot_vqa_mmrlhf13k_img1536_100_7b
 #name=debug
 exps=output/${name}
@@ -20,9 +19,8 @@ torchrun --nproc_per_node=8 \
     src/open_r1/grpo_cot_vqa.py \
     --deepspeed local_scripts/zero3.json \
     --output_dir ${exps} \
-      --model_name_or_path /2022233227/pretrained_models/Qwen2.5-VL-7B-Instruct \
+    --model_name_or_path [PATH_TO_Qwen/Qwen2.5-VL-7B-Instruct] \
     --dataset_name data_config/mmrlhf13k.yaml \
-    --image_root /public/home/qiult/projects/BPO-main \
     --max_prompt_length 1024 \
     --num_generations 4 \
     --per_device_train_batch_size 8 \

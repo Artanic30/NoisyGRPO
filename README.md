@@ -17,7 +17,7 @@ This repository contains the reference code for the paper [NoisyGRPO: Incentiviz
 [🎯 Project web page](https://artanic30.github.io/project_pages/NoisyGRPO/) |
 [Paper](https://arxiv.org/pdf/2510.21122) |
 
-[//]: # ([🤗 HuggingFace Model]&#40;https://huggingface.co/aimagelab/ReflectiVA&#41; |)
+[🤗 HuggingFace Model](https://huggingface.co/collections/Artanic30/noisygrpo) |
 
 [//]: # ([🤗 HuggingFace Dataset]&#40;https://huggingface.co/datasets/aimagelab/ReflectiVA-Data&#41; |)
 
@@ -36,10 +36,10 @@ This repository contains the reference code for the paper [NoisyGRPO: Incentiviz
 
 ## ToDo
 
-- [ ] Release the Training Code.
-- [ ] Release the Training Data.
-- [ ] Release the Models Weights.
-- [ ] Release the Training Scripts.
+- [x] Release the Training Code.
+- [x] Release the Training Data.
+- [x] Release the Models Weights.
+- [x] Release the Training Scripts.
 - [ ] Release the Evaluation Code.
 
 
@@ -67,49 +67,40 @@ conda activate noisygrpo
 bash setup.sh
 ```
 
-[//]: # (## Model)
+## Model
 
-[//]: # (You can access the official model weights for the [ReflectiVA model]&#40;https://huggingface.co/aimagelab/ReflectiVA&#41; on 🤗 Hugging Face.)
+You can access the official model weights for the [NoisyGRPO model](https://huggingface.co/collections/Artanic30/noisygrpo) on 🤗 Hugging Face.
 
-[//]: # ()
-[//]: # (## Dataset)
 
-[//]: # (The official [training dataset]&#40;https://huggingface.co/datasets/aimagelab/ReflectiVA-Data&#41; can be accessed on 🤗 Hugging Face.)
+## Dataset
 
-[//]: # (```)
+The annotation of training dataset is provided in `annotations/mm_rlhf_train13k.json`. 
+Please note that the JSON file includes only the absolute paths to the images. You may need to change it to fit your own system.
 
-[//]: # (cd <data_local_path>)
 
-[//]: # (!pip install huggingface_hub)
+The images can be downloaded from [MM-RLHF](https://huggingface.co/datasets/yifanzhang114/MM-RLHF/tree/main). 
+After downloading the .zip files, unzip the images in one file and change the image path in annotation file accordingly.
 
-[//]: # ()
-[//]: # (python -c "from huggingface_hub import snapshot_download; snapshot_download&#40;repo_id="aimagelab/ReflectiVA-Data", repo_type="dataset", local_dir="<data_local_path>"&#41;")
 
-[//]: # (```)
 
-[//]: # (Please note that the JSON file includes only the relative paths to the images. To access the actual images, you’ll need to download them from their original sources: [infoseek]&#40;https://github.com/open-vision-language/infoseek?tab=readme-ov-file#infoseek-images&#41;, [encycopedic]&#40;https://github.com/google-research/google-research/tree/master/encyclopedic_vqa&#41; and [llava]&#40;https://github.com/haotian-liu/LLaVA?tab=readme-ov-file#visual-instruction-tuning&#41;.  )
+## Training
 
-[//]: # (## Training)
 
-[//]: # ()
-[//]: # ()
-[//]: # (Before starting the training of `ReflectiVA`, make sure to set up the environment and download the dataset to your local machine. Additionally, update the absolute paths in the functions starting with `fill_abs_path` to correctly point to the image locations in your configuration.)
 
-[//]: # ()
-[//]: # (Once everything is set up, you can launch the training job using the following command:)
+Before starting the training of `NoisyGRPO`, make sure to set up the environment and download the dataset to your local machine. Additionally, update the absolute paths in the functions starting with `fill_abs_path` to correctly point to the image locations in your configuration.
 
-[//]: # ()
-[//]: # ()
-[//]: # (```)
 
-[//]: # ()
-[//]: # (cd ./ReflectivA)
+Once everything is set up, you can launch the training job using the following command:
 
-[//]: # ()
-[//]: # (bash scripts/train_reflectiva.sh)
 
-[//]: # ()
-[//]: # (```)
+To train the NoisyGRPO 3B, use the following scripts:
+```
+cd ./NoisyGRPO
+
+bash scripts/noisy_grpo_3B_8gpu.sh
+```
+
+We also provide the scripts for vanilla GRPO, all the scripts are under `scripts/`.
 
 [//]: # (## Inference)
 
