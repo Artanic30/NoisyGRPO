@@ -81,7 +81,15 @@ Please note that the JSON file includes only the absolute paths to the images. Y
 The images can be downloaded from [MM-RLHF](https://huggingface.co/datasets/yifanzhang114/MM-RLHF/tree/main). 
 After downloading the .zip files, unzip the images in one file and change the image path in annotation file accordingly.
 
+The directory for the image should be as following:
 
+```text
+MM_RLHF
+├── long
+├── mcq
+├── safety
+├── short
+```
 
 ## Training
 
